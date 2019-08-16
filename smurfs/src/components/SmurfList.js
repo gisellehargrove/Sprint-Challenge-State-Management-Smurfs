@@ -6,7 +6,6 @@ const SmurfList = props => {
   const [smurfs, updateSmurfs] = useState([]);
 
   useEffect(() => {
-    console.log(props.smurfGetter())
     props.smurfGetter();
     console.log(props)
     updateSmurfs(props.smurfs);
@@ -16,7 +15,7 @@ const SmurfList = props => {
 
   return (
     <div>
-      { props.smurfs.length ? (
+      { !props.smurfs.isFetching ? (
         <div className='smurf-container'>
           { props.smurfs.map(smurf => (
             <div className='smurf' key={ smurf.id }>
