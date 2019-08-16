@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { smurfGetter } from '../actions/actions';
 
+import Form from './Form';
+
 const SmurfList = props => {
   const [smurfs, updateSmurfs] = useState([]);
 
   useEffect(() => {
     props.smurfGetter();
-    console.log(props)
     updateSmurfs(props.smurfs);
   }, [])
 
@@ -26,7 +27,6 @@ const SmurfList = props => {
           ))}
         </div>
       ) : <h1>Loading...</h1>}
-      {console.log(props.smurfs)}
     </div>
   );
 };
