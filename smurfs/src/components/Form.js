@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { smurfSender } from '../actions/actions';
+import { smurfSender, smurfDeleter } from '../actions/actions';
 
 const Form = props => {
   const [newSmurf, setNewSmurf] = useState({name: '', age: '', height: ''});
@@ -13,7 +13,6 @@ const Form = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(newSmurf)
     props.smurfSender(newSmurf)
   };
 
@@ -31,11 +30,15 @@ const Form = props => {
 
 const mapStateToProps = state => {
   return {
-    smurfSender: state.smurfSender
+    smurfSender: state.smurfSender,
+    smurfDeleter: state.smurfDeleter
   }
 };
 
 export default connect(
   mapStateToProps,
-  { smurfSender }
+  {
+    smurfSender,
+    smurfDeleter
+   }
 )(Form);

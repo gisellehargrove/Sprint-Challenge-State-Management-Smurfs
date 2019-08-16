@@ -4,7 +4,9 @@ import {
   FETCH_SMURF_SUCCESS,
   POST_SMURF_START,
   POST_SMURF_FAIL,
-  POST_SMURF_SUCCESS
+  POST_SMURF_SUCCESS,
+  DELETE_SMURF_FAIL,
+  DELETE_SMURF_SUCCESS
  } from '../actions/actions';
 
 const initialState = {
@@ -50,6 +52,13 @@ function reducer(state = initialState, action) {
         return {
           ...state,
           error: action.payload
+        };
+      case DELETE_SMURF_SUCCESS:
+        return {
+          ...state,
+          isFetching: false,
+          error: '',
+          smurfs: action.payload
         };
 
       default:
