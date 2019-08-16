@@ -11,6 +11,7 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
+  console.log(action.payload)
   switch(action.type) {
     case FETCH_SMURF_START:
       return {
@@ -22,7 +23,8 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        error: ''
+        error: '',
+        smurfs: action.payload
       };
     case FETCH_SMURF_FAIL:
       return {
